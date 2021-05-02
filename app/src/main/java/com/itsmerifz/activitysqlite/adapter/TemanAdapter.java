@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.itsmerifz.activitysqlite.DetailData;
 import com.itsmerifz.activitysqlite.EditTeman;
 import com.itsmerifz.activitysqlite.MainActivity;
 import com.itsmerifz.activitysqlite.R;
@@ -51,6 +52,17 @@ public class TemanAdapter extends RecyclerView.Adapter<TemanAdapter.TemanViewHol
         holder.nama.setTextSize(20);
         holder.nama.setText(nm);
         holder.telp.setText(tlp);
+
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(c, DetailData.class);
+                i.putExtra("id",id);
+                i.putExtra("nama",nm);
+                i.putExtra("telp",tlp);
+                c.startActivity(i);
+            }
+        });
 
         holder.card.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
